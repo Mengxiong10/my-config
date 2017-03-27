@@ -1,0 +1,211 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$comment-name: 'comment';
+$comment-x: 313px;
+$comment-y: 170px;
+$comment-offset-x: -313px;
+$comment-offset-y: -170px;
+$comment-width: 70px;
+$comment-height: 70px;
+$comment-total-width: 387px;
+$comment-total-height: 317px;
+$comment-image: '../images/sprite.png';
+$comment: (313px, 170px, -313px, -170px, 70px, 70px, 387px, 317px, '../images/sprite.png', 'comment', );
+$gold-mall-name: 'gold_mall';
+$gold-mall-x: 128px;
+$gold-mall-y: 251px;
+$gold-mall-offset-x: -128px;
+$gold-mall-offset-y: -251px;
+$gold-mall-width: 60px;
+$gold-mall-height: 60px;
+$gold-mall-total-width: 387px;
+$gold-mall-total-height: 317px;
+$gold-mall-image: '../images/sprite.png';
+$gold-mall: (128px, 251px, -128px, -251px, 60px, 60px, 387px, 317px, '../images/sprite.png', 'gold_mall', );
+$gold-recharge-name: 'gold_recharge';
+$gold-recharge-x: 250px;
+$gold-recharge-y: 251px;
+$gold-recharge-offset-x: -250px;
+$gold-recharge-offset-y: -251px;
+$gold-recharge-width: 60px;
+$gold-recharge-height: 60px;
+$gold-recharge-total-width: 387px;
+$gold-recharge-total-height: 317px;
+$gold-recharge-image: '../images/sprite.png';
+$gold-recharge: (250px, 251px, -250px, -251px, 60px, 60px, 387px, 317px, '../images/sprite.png', 'gold_recharge', );
+$gold-recharge-gray-name: 'gold_recharge_gray';
+$gold-recharge-gray-x: 67px;
+$gold-recharge-gray-y: 251px;
+$gold-recharge-gray-offset-x: -67px;
+$gold-recharge-gray-offset-y: -251px;
+$gold-recharge-gray-width: 60px;
+$gold-recharge-gray-height: 60px;
+$gold-recharge-gray-total-width: 387px;
+$gold-recharge-gray-total-height: 317px;
+$gold-recharge-gray-image: '../images/sprite.png';
+$gold-recharge-gray: (67px, 251px, -67px, -251px, 60px, 60px, 387px, 317px, '../images/sprite.png', 'gold_recharge_gray', );
+$history-name: 'history';
+$history-x: 0px;
+$history-y: 251px;
+$history-offset-x: 0px;
+$history-offset-y: -251px;
+$history-width: 66px;
+$history-height: 66px;
+$history-total-width: 387px;
+$history-total-height: 317px;
+$history-image: '../images/sprite.png';
+$history: (0px, 251px, 0px, -251px, 66px, 66px, 387px, 317px, '../images/sprite.png', 'history', );
+$home-selected-name: 'home _selected';
+$home-selected-x: 81px;
+$home-selected-y: 170px;
+$home-selected-offset-x: -81px;
+$home-selected-offset-y: -170px;
+$home-selected-width: 80px;
+$home-selected-height: 80px;
+$home-selected-total-width: 387px;
+$home-selected-total-height: 317px;
+$home-selected-image: '../images/sprite.png';
+$home-selected: (81px, 170px, -81px, -170px, 80px, 80px, 387px, 317px, '../images/sprite.png', 'home _selected', );
+$home-name: 'home';
+$home-x: 0px;
+$home-y: 170px;
+$home-offset-x: 0px;
+$home-offset-y: -170px;
+$home-width: 80px;
+$home-height: 80px;
+$home-total-width: 387px;
+$home-total-height: 317px;
+$home-image: '../images/sprite.png';
+$home: (0px, 170px, 0px, -170px, 80px, 80px, 387px, 317px, '../images/sprite.png', 'home', );
+$icn-close-2-name: 'icn_close 2';
+$icn-close-2-x: 162px;
+$icn-close-2-y: 170px;
+$icn-close-2-offset-x: -162px;
+$icn-close-2-offset-y: -170px;
+$icn-close-2-width: 77px;
+$icn-close-2-height: 77px;
+$icn-close-2-total-width: 387px;
+$icn-close-2-total-height: 317px;
+$icn-close-2-image: '../images/sprite.png';
+$icn-close-2: (162px, 170px, -162px, -170px, 77px, 77px, 387px, 317px, '../images/sprite.png', 'icn_close 2', );
+$icn-close-name: 'icn_close';
+$icn-close-x: 189px;
+$icn-close-y: 251px;
+$icn-close-offset-x: -189px;
+$icn-close-offset-y: -251px;
+$icn-close-width: 60px;
+$icn-close-height: 60px;
+$icn-close-total-width: 387px;
+$icn-close-total-height: 317px;
+$icn-close-image: '../images/sprite.png';
+$icn-close: (189px, 251px, -189px, -251px, 60px, 60px, 387px, 317px, '../images/sprite.png', 'icn_close', );
+$icn-closecomments-name: 'icn_closecomments';
+$icn-closecomments-x: 194px;
+$icn-closecomments-y: 0px;
+$icn-closecomments-offset-x: -194px;
+$icn-closecomments-offset-y: 0px;
+$icn-closecomments-width: 193px;
+$icn-closecomments-height: 169px;
+$icn-closecomments-total-width: 387px;
+$icn-closecomments-total-height: 317px;
+$icn-closecomments-image: '../images/sprite.png';
+$icn-closecomments: (194px, 0px, -194px, 0px, 193px, 169px, 387px, 317px, '../images/sprite.png', 'icn_closecomments', );
+$icn-closedangray-name: 'icn_closedangray';
+$icn-closedangray-x: 240px;
+$icn-closedangray-y: 170px;
+$icn-closedangray-offset-x: -240px;
+$icn-closedangray-offset-y: -170px;
+$icn-closedangray-width: 72px;
+$icn-closedangray-height: 72px;
+$icn-closedangray-total-width: 387px;
+$icn-closedangray-total-height: 317px;
+$icn-closedangray-image: '../images/sprite.png';
+$icn-closedangray: (240px, 170px, -240px, -170px, 72px, 72px, 387px, 317px, '../images/sprite.png', 'icn_closedangray', );
+$icn-closeplaybill-name: 'icn_closeplaybill';
+$icn-closeplaybill-x: 0px;
+$icn-closeplaybill-y: 0px;
+$icn-closeplaybill-offset-x: 0px;
+$icn-closeplaybill-offset-y: 0px;
+$icn-closeplaybill-width: 193px;
+$icn-closeplaybill-height: 169px;
+$icn-closeplaybill-total-width: 387px;
+$icn-closeplaybill-total-height: 317px;
+$icn-closeplaybill-image: '../images/sprite.png';
+$icn-closeplaybill: (0px, 0px, 0px, 0px, 193px, 169px, 387px, 317px, '../images/sprite.png', 'icn_closeplaybill', );
+$spritesheet-width: 387px;
+$spritesheet-height: 317px;
+$spritesheet-image: '../images/sprite.png';
+$spritesheet-sprites: ($comment, $gold-mall, $gold-recharge, $gold-recharge-gray, $history, $home-selected, $home, $icn-close-2, $icn-close, $icn-closecomments, $icn-closedangray, $icn-closeplaybill, );
+$spritesheet: (387px, 317px, '../images/sprite.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@import './test.scss';
+@import './sprite.scss';
+@include sprites($spritesheet-sprites);
+
+h1{
+  font:14px;
+  color:red;
+  margin-left: 30px;
+  margin-top:20px;
+}

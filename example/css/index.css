@@ -1,0 +1,80 @@
+h2 {
+  font-size: 15px; }
+
+.comment {
+  background-image: url(../images/sprite.png);
+  background-position: -313px -170px;
+  width: 70px;
+  height: 70px; }
+
+.gold_mall {
+  background-image: url(../images/sprite.png);
+  background-position: -128px -251px;
+  width: 60px;
+  height: 60px; }
+
+.gold_recharge {
+  background-image: url(../images/sprite.png);
+  background-position: -250px -251px;
+  width: 60px;
+  height: 60px; }
+
+.gold_recharge_gray {
+  background-image: url(../images/sprite.png);
+  background-position: -67px -251px;
+  width: 60px;
+  height: 60px; }
+
+.history {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -251px;
+  width: 66px;
+  height: 66px; }
+
+.home _selected {
+  background-image: url(../images/sprite.png);
+  background-position: -81px -170px;
+  width: 80px;
+  height: 80px; }
+
+.home {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -170px;
+  width: 80px;
+  height: 80px; }
+
+.icn_close 2 {
+  background-image: url(../images/sprite.png);
+  background-position: -162px -170px;
+  width: 77px;
+  height: 77px; }
+
+.icn_close {
+  background-image: url(../images/sprite.png);
+  background-position: -189px -251px;
+  width: 60px;
+  height: 60px; }
+
+.icn_closecomments {
+  background-image: url(../images/sprite.png);
+  background-position: -194px 0px;
+  width: 193px;
+  height: 169px; }
+
+.icn_closedangray {
+  background-image: url(../images/sprite.png);
+  background-position: -240px -170px;
+  width: 72px;
+  height: 72px; }
+
+.icn_closeplaybill {
+  background-image: url(../images/sprite.png);
+  background-position: 0px 0px;
+  width: 193px;
+  height: 169px; }
+
+h1 {
+  font: 14px;
+  color: red;
+  margin-left: 30px;
+  margin-top: 20px; }
