@@ -33,24 +33,7 @@ module.exports = {
         test:/\.css$/,
         use:ExtractTextPlugin.extract({
           fallback:'style-loader',
-          use:[
-            { 
-              loader: 'css-loader',
-              options:{
-                sourceMap:true
-              }
-            },
-            {
-              loader:'postcss-loader',
-              options:{
-                plugins () {
-                  return [
-                    require('autoprefixer')
-                  ]
-                }
-              }
-            }
-          ]
+          use:['css-loader?sourceMap','postcss-loader']
         })
       },
       {
