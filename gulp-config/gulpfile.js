@@ -1,10 +1,13 @@
 const gulp = require('gulp')
+const babel = require('gulp-babel')
 const sass = require('gulp-sass')
 const autoprefixer = require('gulp-autoprefixer')
 //合并文件,自动写入html
 const useref = require('gulp-useref')
 const sourcemaps = require('gulp-sourcemaps')
 const gulpif = require('gulp-if')
+const lazypipe = require('lazypipe')
+
 //压缩js插件
 const uglify = require('gulp-uglify')
 //压缩css插件
@@ -14,7 +17,6 @@ const imagemin = require('gulp-imagemin')
 //sprite插件
 const spritesmith = require('gulp.spritesmith')
 
-const lazypipe = require('lazypipe')
 const bs = require('browser-sync').create()
 const del = require('del')
 
@@ -56,7 +58,7 @@ gulp.task('default',['watch'])
 //build
 
 gulp.task('clean:dist',function() {
-  del.sync('dist')
+  return del(['dist'])
 })
 
 gulp.task('image',function() {
@@ -65,10 +67,12 @@ gulp.task('image',function() {
     .pipe(gulp.dest('dist/images'))
 })
 
+var jsHandle = lazypipe().pipe(babel).pipe(uglify)
+
 gulp.task('useref',['clean:dist','sass'],function() {
   return gulp.src('src/index.html')
     .pipe(useref({},lazypipe().pipe(sourcemaps.init,{loadMaps:true})))
-    .pipe(gulpif('*.js',uglify()))
+    .pipe(gulpif('*.js',jsHandle()))
     .pipe(gulpif('*.css',cssnano()))
     .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest('dist'))
