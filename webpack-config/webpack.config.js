@@ -1,6 +1,6 @@
 
 const path = require('path')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry:{
@@ -13,7 +13,7 @@ module.exports = {
   },
   resolve:{
     //自动解析的扩展,在引入模块时可以不带扩展
-    extensions:['.js','.json'],
+    extensions:['.js','.json','.css','.scss'],
     modules:[
       path.resolve(__dirname,'./src'),
       'node_modules'
@@ -31,21 +31,12 @@ module.exports = {
       },
       {
         test:/\.css$/,
-        use:ExtractTextPlugin.extract({
-          fallback:'style-loader',
-          use:['css-loader?sourceMap','postcss-loader']
-        })
+        use:['style-loader','css-loader','postcss-loader']
       },
       {
         test:/\.scss$/,
-        use:ExtractTextPlugin.extract({
-          fallback:'style-loader',
-          use:['css-loader?sourceMap','postcss-loader','sass-loader?sourceMap']
-        })
+        use:['style-loader','css-loader','postcss-loader','sass-loader']
       }
     ]
-  },
-  plugins:[
-    new ExtractTextPlugin('static/css/[name].[contenthash].css')
-  ]
+  }
 }
