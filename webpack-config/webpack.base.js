@@ -25,8 +25,18 @@ module.exports = {
     rules:[
       {
         test:/\.js$/,
-        use:['babel-loader'],
+        use:'babel-loader',
         exclude:[path.resolve(__dirname,'node_modules')],
+      },
+      {
+        test:/\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        use:{
+          loader: 'url-loader',
+          options:{
+            limit:10000,
+            name:'static/img/[name].[hash].[ext]'
+          }
+        }
       },
       {
         test:/\.css$/,
