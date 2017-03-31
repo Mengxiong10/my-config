@@ -1,6 +1,9 @@
 
+/*@import './var.css';*/
+
 h1{
   font:14px;
+  color:var(--color-blue);
 }
 
 #app{

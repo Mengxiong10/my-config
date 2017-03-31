@@ -31,7 +31,6 @@ const webpackConfig = merge(webpackBase,{
         spinner.start()
       }else if (percentage === 1) {
         spinner.stop()
-        opn(uri)
       }else{
         spinner.text ='compiling ' +  percentage * 100 + '%'
       }
@@ -62,5 +61,6 @@ server.listen(port,function(err) {
     console.error(err)
     return 
   }
+  opn(uri)
 })
 

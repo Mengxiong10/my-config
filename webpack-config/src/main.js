@@ -1,6 +1,6 @@
 
 import {a} from 'test.js'
-import './test.css'
+import './index.css'
 
 var img = require('./kaka1.jpg')
 
