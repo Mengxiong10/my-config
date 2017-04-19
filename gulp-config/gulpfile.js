@@ -1,6 +1,6 @@
 const gulp = require('gulp')
 const babel = require('gulp-babel')
-const postcss = require('postcss')
+const postcss = require('gulp-postcss')
 //合并文件,自动写入html
 const useref = require('gulp-useref')
 const sourcemaps = require('gulp-sourcemaps')
@@ -25,19 +25,12 @@ const bs = require('browser-sync').create()
 const del = require('del')
 
 //编译css 
-gulp.task('css', function () {
-  return gulp.src(Path.join(serverPath,'css/**/*.css'))
-    .pipe(base64({
-      extensions: ['png'], 
-      maxImageSize: 20 * 1024,
-      deleteAfterEncoding:false,
-    }))
+gulp.task('style', function () {
+  return gulp.src(Path.join(serverPath,'postcss/**/*.css'))
     .pipe(postcss()) // 在.postcssrc.js 指定插件
     .pipe(gulp.dest(Path.join(serverPath,'css')))
     .pipe(bs.stream()) // 浏览器注入css 更新
 })
-
-
 
 gulp.task('sprite',function() {
   return gulp.src(Path.join(serverPath, 'images/sprite/**/*.png'))
@@ -50,7 +43,7 @@ gulp.task('sprite',function() {
 })
 
 //dev
-gulp.task('browserSync',['css'],function() {
+gulp.task('browserSync',['style'],function() {
   bs.init({
     server:serverPath
   })
@@ -58,7 +51,7 @@ gulp.task('browserSync',['css'],function() {
 
 gulp.task('watch',['browserSync'],function() {
   // 响应添加和删除文件
-  gulp.watch('css/**/*.css',{cwd:serverPath},['css'])
+  gulp.watch('postcss/**/*.css',{cwd:serverPath},['style'])
   gulp.watch('*.html',{cwd:serverPath},bs.reload)
   gulp.watch('js/**/*.js',{cwd:serverPath},bs.reload)
 })
@@ -77,12 +70,24 @@ gulp.task('image',function() {
     .pipe(gulp.dest('dist/images'))
 })
 
-var jsHandle = lazypipe().pipe(babel).pipe(uglify)
+const jsHandle = lazypipe().pipe(babel).pipe(uglify)
 
-gulp.task('useref',['clean:dist','css'],function() {
-  return gulp.src(Path.join(serverPath,'index.html'))
-    .pipe(useref({},lazypipe().pipe(sourcemaps.init,{loadMaps:true})))
-    .pipe(gulpif('*.js',jsHandle()))
+// 合并文件任务
+// 在html 设置
+// <!-- build:css css/combined.css -->
+//  <link href="css/one.css" rel="stylesheet">
+//  <link href="css/two.css" rel="stylesheet">
+// <!-- endbuild -->
+
+gulp.task('useref', ['clean:dist', 'style'], function () {
+  return gulp.src(Path.join(serverPath, 'index.html'))
+    .pipe(useref({}, lazypipe().pipe(sourcemaps.init, { loadMaps: true })))
+    .pipe(gulpif('*.css', base64({
+      extensions: ['png'],
+      maxImageSize: 20 * 1024,
+      deleteAfterEncoding: false,
+    })))
+    .pipe(gulpif('*.js', jsHandle()))
     .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest('dist'))
 })
