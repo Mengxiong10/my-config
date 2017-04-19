@@ -8,5 +8,6 @@ module.exports = {
     'postcss-css-reset':{},
     'postcss-short':{},
     'postcss-cssnext' : {},
+    'cssnano ':{}
   }
 }

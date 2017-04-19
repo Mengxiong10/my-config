@@ -1,7 +1,6 @@
 const gulp = require('gulp')
 const babel = require('gulp-babel')
-const sass = require('gulp-sass')
-const autoprefixer = require('gulp-autoprefixer')
+const postcss = require('postcss')
 //合并文件,自动写入html
 const useref = require('gulp-useref')
 const sourcemaps = require('gulp-sourcemaps')
@@ -12,41 +11,46 @@ const Path = require('path')
 
 const argv = minimist(process.argv.slice(2))
 const serverPath = argv.src || './src'
-console.log(argv)
 
 //压缩js插件
 const uglify = require('gulp-uglify')
-//压缩css插件
-const cssnano = require('gulp-cssnano')
 //压缩图片插件
 const imagemin = require('gulp-imagemin')
 //sprite插件
 const spritesmith = require('gulp.spritesmith')
 
+const base64 = require('gulp-base64')
+
 const bs = require('browser-sync').create()
 const del = require('del')
 
-//编译sass 
-gulp.task('sass', function () {
-  return gulp.src(Path.join(serverPath,'scss/**/*.scss'))
-    .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer()) // 在package.json 用 browserslist 字段去指定浏览器
+//编译css 
+gulp.task('css', function () {
+  return gulp.src(Path.join(serverPath,'css/**/*.css'))
+    .pipe(base64({
+      extensions: ['png'], 
+      maxImageSize: 20 * 1024,
+      deleteAfterEncoding:false,
+    }))
+    .pipe(postcss()) // 在.postcssrc.js 指定插件
     .pipe(gulp.dest(Path.join(serverPath,'css')))
     .pipe(bs.stream()) // 浏览器注入css 更新
 })
+
+
 
 gulp.task('sprite',function() {
   return gulp.src(Path.join(serverPath, 'images/sprite/**/*.png'))
     .pipe(spritesmith({
       imgName:'images/sprite.png',
-      cssName:'scss/sprite.scss',
+      cssName:'css/sprite.css',
       padding:1,
     }))
     .pipe(gulp.dest(serverPath))
 })
 
 //dev
-gulp.task('browserSync',['sass'],function() {
+gulp.task('browserSync',['css'],function() {
   bs.init({
     server:serverPath
   })
@@ -54,7 +58,7 @@ gulp.task('browserSync',['sass'],function() {
 
 gulp.task('watch',['browserSync'],function() {
   // 响应添加和删除文件
-  gulp.watch('scss/**/*.scss',{cwd:serverPath},['sass'])
+  gulp.watch('css/**/*.css',{cwd:serverPath},['css'])
   gulp.watch('*.html',{cwd:serverPath},bs.reload)
   gulp.watch('js/**/*.js',{cwd:serverPath},bs.reload)
 })
@@ -75,11 +79,10 @@ gulp.task('image',function() {
 
 var jsHandle = lazypipe().pipe(babel).pipe(uglify)
 
-gulp.task('useref',['clean:dist','sass'],function() {
+gulp.task('useref',['clean:dist','css'],function() {
   return gulp.src(Path.join(serverPath,'index.html'))
     .pipe(useref({},lazypipe().pipe(sourcemaps.init,{loadMaps:true})))
     .pipe(gulpif('*.js',jsHandle()))
-    .pipe(gulpif('*.css',cssnano()))
     .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest('dist'))
 })
