@@ -7,40 +7,48 @@ const del = require('del')
 
 const webpackBase = require('./webpack.base.js')
 
-webpackBase.module.rules.forEach((rule) => {
-  let styleTest = ['.css', '.scss'].some(v => rule.test.test(v))
-  if (styleTest) {
-    let fallback = rule.use.shift()
-    let use = rule.use.map(v => v + '?sourcaMap&minimize')
-    rule.use = ExtractTextPlugin.extract({
-      fallback,
-      use
-    })
-  }
-})
-
 const webpackConfig = merge(webpackBase, {
-  devtool:'cheap-module-source-map',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          use: ['css-loader', 'postcss-loader'],
+          fallback: 'style-loader'
+        })
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          use: ['css-loader', 'postcss-loader', 'sass-loader'],
+          fallback: 'style-loader'
+        })
+      }
+    ]
+  },
+  devtool: 'cheap-module-source-map',
   output: {
     filename: 'static/js/[name].[chunkhash].js',
-    //按需加载的chunk
-    chunkFilename: 'static/js/[id].[chunkhash].js',
+    // 按需加载的chunk
+    chunkFilename: 'static/js/[id].[chunkhash].js'
   },
-  plugins:[
-    //创建编译时可以使用的全局变量
+  plugins: [
+    // 创建编译时可以使用的全局变量
     new webpack.DefinePlugin({
-      'process.env':'"production"'
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
     }),
     new ExtractTextPlugin({
       filename: 'static/css/[name].[contenthash].css'
     }),
-    
+
     new HTMLWebpackPlugin({
-      template:'index.html',
-      filename:'index.html',
-      inject:true,
-      chunksSortMode:'dependency',
-      minify:{
+      template: 'index.html',
+      filename: 'index.html',
+      inject: true,
+      chunksSortMode: 'dependency',
+      minify: {
         removeComments: true,
         collapseWhitespace: true,
         removeAttributeQuotes: true
@@ -48,14 +56,14 @@ const webpackConfig = merge(webpackBase, {
     }),
 
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true 
+      sourceMap: true
     }),
-    //将来自node_modules 文件打包到vendor
+    // 将来自node_modules 文件打包到vendor
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      minChunks:function(module) {
-        return module.resource && 
-          /\.js$/.test(module.resource) && 
+      minChunks: function (module) {
+        return module.resource &&
+          /\.js$/.test(module.resource) &&
           module.resource.indexOf('node_modules') !== -1
       }
     }),
@@ -63,18 +71,20 @@ const webpackConfig = merge(webpackBase, {
     // 可以当app 改变时,vendor不变化,文件长期缓存
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
-      chunks:['vendor']
+      chunks: ['vendor']
     })
   ]
 })
+
+console.log(webpackConfig)
 
 del.sync(['dist'])
 
 const spinner = ora('building dist...').start()
 
-webpack(webpackConfig,(err,stats) => {
+webpack(webpackConfig, (err, stats) => {
   spinner.stop()
-  if (err) throw err 
+  if (err) throw err
   const info = stats.toJson()
   if (stats.hasErrors()) {
     console.error(info.errors)
@@ -85,12 +95,6 @@ webpack(webpackConfig,(err,stats) => {
   console.log(stats.toString({
     colors: true,
     chunks: false,
-    children:false,
+    children: false
   }))
-
 })
-
-
-
-
-

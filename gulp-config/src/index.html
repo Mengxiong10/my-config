@@ -5,12 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+    #canvas {
+      border: 1px solid red;
+      box-sizing: border-box;
+    }
+  </style>
   <!-- build:css css/index.css -->
   <link rel="stylesheet" href="./css/index.css">
   <!-- endbuild-->
 </head>
 <body>
   <h1>haha</h1>
+  <canvas id="canvas"></canvas>
+  <script>
+    // document.addEventListener('DOMContentLoaded')
+    const canvas = document.getElementById('canvas')
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+    const ctx = canvas.getContext('2d')
+    console.log(canvas.width)
+    ctx.moveTo(100,200)
+    ctx.lineTo(300, 600)
+    ctx.lineTo(100, 600)
+    ctx.strokeStyle = 'red'
+    ctx.stroke()
+    ctx.beginPath()
+    ctx.moveTo(300,200)
+    ctx.lineTo(500, 600)
+    ctx.lineTo(300, 600)
+    ctx.strokeStyle = 'blue'
+    ctx.stroke()
+  </script>
   <!-- build:js js/index.js -->
   <script src="./js/index.js"></script>
   <!-- endbuild -->
