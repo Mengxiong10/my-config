@@ -14,11 +14,10 @@ module.exports = {
     // 自动解析的扩展,在引入模块时可以不带扩展
     extensions: ['.js', '.json', '.css', '.scss'],
     modules: [
-      path.resolve(__dirname, './src'),
       'node_modules'
     ],
     alias: {
-
+      'src': path.resolve(__dirname, './src')
     }
   },
   module: {
