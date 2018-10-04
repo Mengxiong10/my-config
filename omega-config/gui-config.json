@@ -1,0 +1,76 @@
+{
+    "configs": [
+        {
+            "method": "rc4-md5",
+            "password": "xmx4588335",
+            "remarks": "m1",
+            "server": "104.128.237.198",
+            "server_port": 13295
+        },
+        {
+            "method": "rc4-md5",
+            "password": "xmx4588335",
+            "remarks": "m2",
+            "server": "104.128.237.199",
+            "server_port": 13295
+        },
+        {
+            "method": "rc4-md5",
+            "password": "xmx4588335",
+            "remarks": "m3",
+            "server": "104.128.237.200",
+            "server_port": 13295
+        },
+        {
+            "method": "rc4-md5",
+            "password": "xmx4588335",
+            "remarks": "香港1",
+            "server": "45.124.67.118",
+            "server_port": 13295
+        },
+        {
+            "method": "rc4-md5",
+            "password": "xmx4588335",
+            "remarks": "香港2",
+            "server": "103.192.177.137",
+            "server_port": 13295
+        },
+        {
+            "method": "rc4-md5",
+            "password": "xmx4588335",
+            "remarks": "新加坡1",
+            "server": "116.251.219.241",
+            "server_port": 13295
+        },
+        {
+            "method": "rc4-md5",
+            "password": "xmx4588335",
+            "remarks": "新加坡2",
+            "server": "116.251.219.242",
+            "server_port": 13295
+        },
+        {
+            "method": "rc4-md5",
+            "password": "xmx4588335",
+            "remarks": "韩国1",
+            "server": "103.214.68.158",
+            "server_port": 13295
+        },
+        {
+            "method": "rc4-md5",
+            "password": "xmx4588335",
+            "remarks": "韩国2",
+            "server": "103.214.68.178",
+            "server_port": 13295
+        },
+        {
+            "method": "rc4-md5",
+            "password": "xmx4588335",
+            "remarks": "东京",
+            "server": "45.77.128.18",
+            "server_port": 13295
+        }
+    ],
+    "localPort": 1080,
+    "shareOverLan": false
+}
